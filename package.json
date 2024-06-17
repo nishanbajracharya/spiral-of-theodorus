@@ -1,0 +1,23 @@
+{
+  "name": "spiral-of-theodorus",
+  "version": "1.0.0",
+  "description": "A canvas animation of spiral of theodorus",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nishanbajracharya/spiral-of-theodorus.git"
+  },
+  "keywords": [
+    "canvas",
+    "spiral"
+  ],
+  "author": "Nishan Bajracharya <nisbaj11@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nishanbajracharya/spiral-of-theodorus/issues"
+  },
+  "homepage": "https://github.com/nishanbajracharya/spiral-of-theodorus#readme"
+}
