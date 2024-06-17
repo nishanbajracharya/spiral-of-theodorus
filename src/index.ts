@@ -2,6 +2,13 @@ import 'normalize.css';
 
 import './style.css';
 
+const MIN = 1;
+const MAX = 200;
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
 function randomColor(alpha: number) {
   return `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(
     Math.random() * 255
@@ -33,7 +40,7 @@ if (query) {
   if (count) {
     const input = parseInt(count);
     if (Number.isInteger(input) && input > 0) {
-      spiralCount = input;
+      spiralCount = clamp(input, MIN, MAX);
     }
   }
 
@@ -46,7 +53,20 @@ if (query) {
   }
 }
 
-const colors = Array(spiralCount)
+const countSlider = document.createElement('input');
+countSlider.type = 'range';
+app.appendChild(countSlider);
+
+countSlider.setAttribute('min', `${MIN}`);
+countSlider.setAttribute('max', `${MAX}`);
+countSlider.setAttribute('step', '1');
+countSlider.value = `${spiralCount}`;
+
+countSlider.oninput = () => {
+  spiralCount = parseInt(countSlider.value);
+};
+
+const colors = Array(MAX)
   .fill('')
   .map(() => randomColor(0.5));
 
