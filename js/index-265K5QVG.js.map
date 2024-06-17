@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/index.ts"],
+  "sourcesContent": ["import 'normalize.css';\n\nimport './style.css';\n\nconst canvas = document.createElement('canvas');\nconst ctx = canvas.getContext('2d')!;\ncanvas.width = window.innerWidth * .8;\ncanvas.height = window.innerHeight * .8;\n\nconst app = document.querySelector('#app')!;\n\napp.appendChild(canvas);\n\nfunction draw(time: number) {\n  ctx.clearRect(0, 0, canvas.width, canvas.height);\n\n  requestAnimationFrame(draw);\n};\n\nrequestAnimationFrame(draw);"],
+  "mappings": "MAIA,IAAMA,EAAS,SAAS,cAAc,QAAQ,EACxCC,EAAMD,EAAO,WAAW,IAAI,EAClCA,EAAO,MAAQ,OAAO,WAAa,GACnCA,EAAO,OAAS,OAAO,YAAc,GAErC,IAAME,EAAM,SAAS,cAAc,MAAM,EAEzCA,EAAI,YAAYF,CAAM,EAEtB,SAASG,EAAKC,EAAc,CAC1BH,EAAI,UAAU,EAAG,EAAGD,EAAO,MAAOA,EAAO,MAAM,EAE/C,sBAAsBG,CAAI,CAC5B,CAEA,sBAAsBA,CAAI",
+  "names": ["canvas", "ctx", "app", "draw", "time"]
+}
