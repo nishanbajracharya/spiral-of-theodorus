@@ -22,8 +22,8 @@ const mouse = {
   y: 0,
 };
 
-let spiralCount = 8;
-let size = 30;
+let spiralCount = 16;
+let size = 100;
 
 const query = window.location.search;
 if (query) {
@@ -62,32 +62,24 @@ function draw() {
   ctx.reset();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  let unit = size;
-
   // Recursively draw triangle
-  let originX = canvas.width / 2;
-  let originY = canvas.height / 2;
   let angle = 0;
   for (let i = 0; i < spiralCount; i++) {
-    unit = unit * Math.sqrt(2);
     ctx.save();
     ctx.beginPath();
     ctx.strokeStyle = '#fff';
     ctx.fillStyle = colors[i];
-    ctx.translate(originX, originY);
+    ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.moveTo(0, 0);
     ctx.rotate(angle);
-    ctx.lineTo(0, -unit);
-    ctx.lineTo(-unit, 0);
+    ctx.lineTo(size * Math.sqrt(i + 1), 0);
+    ctx.lineTo(size * Math.sqrt(i + 1), -size);
     ctx.lineTo(0, 0);
     ctx.fill();
     ctx.stroke();
     ctx.closePath();
     ctx.restore();
-
-    originX -= unit * Math.sin(-angle);
-    originY -= unit * Math.cos(-angle);
-    angle -= Math.PI / 4;
+    angle -= Math.acos(Math.sqrt(i + 1) / Math.sqrt(i + 2));
   }
 
   // Draw cursor
