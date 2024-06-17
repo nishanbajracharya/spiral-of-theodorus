@@ -23,7 +23,7 @@ await ctx.watch();
 
 let { host, port } = await ctx.serve({
   servedir: 'dist',
-  port: 3000,
+  port: process.env.PORT || 3000,
 });
 
 console.log(`http://${host}:${port}`);
