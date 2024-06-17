@@ -24,4 +24,5 @@ html, body {
 
 canvas {
   border: 1px solid var(--canvas-border);
+  cursor: crosshair;
 }
