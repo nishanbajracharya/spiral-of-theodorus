@@ -1,4 +1,5 @@
 import * as esbuild from 'esbuild';
+import { clean } from 'esbuild-plugin-clean';
 import htmlPlugin from '@chialab/esbuild-plugin-html';
 
 await esbuild.build({
@@ -10,5 +11,10 @@ await esbuild.build({
   outdir: 'dist',
   assetNames: 'assets/[name]-[hash]',
   chunkNames: '[ext]/[name]-[hash]',
-  plugins: [htmlPlugin()],
+  plugins: [
+    htmlPlugin(),
+    clean({
+      patterns: ['dist/*'],
+    }),
+  ],
 });
