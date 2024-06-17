@@ -4,7 +4,8 @@
   "description": "A canvas animation of spiral of theodorus",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.mjs"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/nishanbajracharya/spiral-of-theodorus/issues"
   },
-  "homepage": "https://github.com/nishanbajracharya/spiral-of-theodorus#readme"
+  "homepage": "https://github.com/nishanbajracharya/spiral-of-theodorus#readme",
+  "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.18.2",
+    "@types/web": "^0.0.149",
+    "esbuild": "0.21.5",
+    "typescript": "^5.4.5"
+  }
 }
