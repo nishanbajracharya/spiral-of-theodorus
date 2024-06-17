@@ -12,7 +12,12 @@ let ctx = await esbuild.context({
   assetNames: 'assets/[name]-[hash]',
   chunkNames: '[ext]/[name]-[hash]',
   plugins: [
-    htmlPlugin(),
+    htmlPlugin({
+      minifyOptions: {
+        collapseWhitespace: true,
+      },
+      injectStylesAs: 'link',
+    }),
     clean({
       patterns: ['dist/*'],
     }),
