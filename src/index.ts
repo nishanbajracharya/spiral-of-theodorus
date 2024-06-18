@@ -78,6 +78,14 @@ canvas.addEventListener('mousemove', (e) => {
   mouse.y = e.clientY - canvas.offsetTop;
 });
 
+// Change size of spiral based on scroll wheel
+canvas.addEventListener('wheel', changeSize);
+
+function changeSize(e: WheelEvent) {
+  const delta = Math.sign(e.deltaY);
+  size = clamp(size - delta, MIN, MAX);
+}
+
 function draw() {
   ctx.reset();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
