@@ -78,17 +78,47 @@ canvas.addEventListener('mousemove', (e) => {
   mouse.y = e.clientY - canvas.offsetTop;
 });
 
+let sizeDelta = 0;
+
+canvas.addEventListener('keydown',  (e) => {
+  switch (e.key) {
+    case 'ArrowLeft':
+      sizeDelta = -1;
+      break;
+    case 'ArrowRight':
+      sizeDelta = 1;
+      break;
+    default:
+      sizeDelta = 0;
+  }
+});
+
+canvas.addEventListener('keyup', (e) => {
+  switch (e.key) {
+    case 'ArrowLeft':
+    case 'ArrowRight':
+      sizeDelta = 0;
+  }
+});
+
 // Change size of spiral based on scroll wheel
 canvas.addEventListener('wheel', changeSize);
 
-function changeSize(e: WheelEvent) {
-  const delta = Math.sign(e.deltaY);
+function changeSize(e: WheelEvent | number) {
+  let delta: number = 0;
+  if (Number.isNaN(e)) {
+    delta = Math.sign(e.deltaY);
+  } else {
+    delta = Math.sign(e);
+  }
   size = clamp(size - delta, MIN, MAX);
 }
 
 function draw() {
   ctx.reset();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  changeSize(sizeDelta);
 
   // Recursively draw triangle
   let angle = 0;
