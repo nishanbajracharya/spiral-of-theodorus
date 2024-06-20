@@ -80,11 +80,13 @@ canvas.addEventListener('mousemove', (e) => {
 
 let sizeDelta = 0;
 
-canvas.addEventListener('keydown',  (e) => {
+window.addEventListener('keydown',  (e) => {
   switch (e.key) {
+    case 'a':
     case 'ArrowLeft':
       sizeDelta = -1;
       break;
+    case 'd':
     case 'ArrowRight':
       sizeDelta = 1;
       break;
@@ -93,8 +95,10 @@ canvas.addEventListener('keydown',  (e) => {
   }
 });
 
-canvas.addEventListener('keyup', (e) => {
+window.addEventListener('keyup', (e) => {
   switch (e.key) {
+    case 'a':
+    case 'd':
     case 'ArrowLeft':
     case 'ArrowRight':
       sizeDelta = 0;
@@ -106,10 +110,10 @@ canvas.addEventListener('wheel', changeSize);
 
 function changeSize(e: WheelEvent | number) {
   let delta: number = 0;
-  if (Number.isNaN(e)) {
+  if (e instanceof WheelEvent) {
     delta = Math.sign(e.deltaY);
   } else {
-    delta = Math.sign(e);
+    delta = -e;
   }
   size = clamp(size - delta, MIN, MAX);
 }
